@@ -4,6 +4,7 @@ import com.learning.address.model.AddressResponse;
 import com.learning.employee.feignclient.feingnClient;
 import com.learning.employee.model.*;
 import com.learning.employee.repository.EmployeeRepository;
+import com.learning.springai.entity.FirstIndexEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService{
    @Autowired
    feingnClient.AddressFeingClient addressFeingClient;
 
+   @Autowired
+   feingnClient.SpringAIFeignclient SpringAIFeignclient;
 
     /**
      * @param employeeRequest
@@ -57,5 +60,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public EmployeeRecord addEmployeeAddress(AddressRecord adressRecord) {
         return null;
+    }
+
+
+    public ESEntity insertinES(ESEntity prompt){
+        return SpringAIFeignclient.insertintoES(prompt);
     }
 }

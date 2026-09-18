@@ -1,11 +1,9 @@
 package com.learning.employee.controller;
 
-import com.learning.employee.model.EmployeeRecord;
-import com.learning.employee.model.EmployeeRequest;
-import com.learning.employee.model.EmployeeResponse;
-import com.learning.employee.model.EmployeeTable;
+import com.learning.employee.model.*;
 import com.learning.employee.service.EmployeeService;
 import com.learning.employee.service.EmployeeServiceImpl;
+import com.learning.springai.entity.FirstIndexEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,5 +34,10 @@ public class EmployeeController {
     @GetMapping("/getbyid/{id}")
     public ResponseEntity<EmployeeResponse> createEmployee(@PathVariable Long id){
         return  ResponseEntity.ok(employeeServiceimpl.getEmployee(id,id));
+    }
+
+    @PostMapping("/insertines")
+    public ResponseEntity<ESEntity> insertintoES(@RequestBody ESEntity prompt){
+          return ResponseEntity.ok(employeeServiceimpl.insertinES(prompt));
     }
 }
